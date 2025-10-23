@@ -1,0 +1,169 @@
+/* Remove default spacing for all element*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /*Styling for the whole page*/
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0b0e19, #1a213a);
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /*space above and below the header*/
+  header {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 5%;
+  }
+  
+  /*Main title styling*/
+  h1 {
+    color: #ff6b6b;
+    text-shadow: 0 0 6px rgba(255, 107, 107, 0.6);
+    font-size: 32px;
+  }
+  
+  /*Styling for line under title*/
+  header p {
+    color: #ff6b6b;
+    text-shadow: 0 0 6px rgba(255, 107, 107, 0.6);
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  /*arrange cards in a grid layout and makes the grid responsive*/
+  .gallery {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+  }
+  
+  /*Styles each movie card, changes cursor for clarification and helps with smooth animations on hover/click*/
+  .movie-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 0 5px #ff6b6b;
+    max-height: 360px;
+  }
+  
+  /*On hover change style*/
+  .movie-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #6bafff;
+  }
+  
+  /*Styles the img to take up full card witdh, gives it rounded corners, makes changes smooth, black and white style.*/
+  .movie-card img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: grayscale(90%);
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+  
+  /*Change style on hover*/
+  .movie-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+  
+  /*Style for movie title*/
+  .movie-card h2 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #ffb347;
+    margin-bottom: 15px; /* Space between synopsis and review */
+  }
+  
+  /* Hide movie info by default */
+.movie-info {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.6s ease, max-height 0.6s ease;
+  margin-top: 10px;
+  font-size: 90%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 5%;
+  border-radius: 8px;
+}
+
+/* When the card is focused (clicked) */
+.movie-card:focus-within {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px #6bafff;
+  max-height: none;
+}
+
+/* Show info only for the clicked card */
+.movie-card:focus-within .movie-info {
+  opacity: 1;
+  max-height: 500px;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Fade-in animation for text */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  
+  /*space only below synposis*/
+  .movie-info p:first-of-type {
+    margin-bottom: 15px; /* Space between synopsis and review */
+  }
+
+  /*Responsive for tablet*/
+  @media (max-width: 900px) {
+    h1 {
+      font-size: 28px;
+    }
+    .movie-card img {
+      height: 280px;
+    }
+    .movie-card h2 {
+      font-size: 18px;
+    }
+  }
+  
+  /*Responsive for phone*/
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 22px;
+    }
+    header p {
+      font-size: 14px;
+    }
+    .movie-card img {
+      height: 230px;
+    }
+    .movie-card h2 {
+      font-size: 16px;
+    }
+    .movie-info {
+      font-size: 80%;
+      padding: 5%;
+    }
+  }
+  
